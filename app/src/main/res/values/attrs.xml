@@ -16,4 +16,16 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="ArcProgress">
+        <attr name="borderWidth" format="dimension"></attr>
+        <attr name="unprogresColor" format="color"></attr>
+        <attr name="progressColor" format="color"></attr>
+        <attr name="radius" format="dimension"></attr>
+        <attr name="degree" format="integer"></attr>
+        <attr name="arcCapRound" format="boolean"></attr>
+        <attr name="backgroundInside" format="integer"></attr>
+        <attr name="TextSizeInside" format="integer"></attr>
+        <attr name="TextColorInside" format="color"></attr>
+    </declare-styleable>
+
 </resources>
