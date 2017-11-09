@@ -16,7 +16,7 @@
         </attr>
     </declare-styleable>
 
-    <declare-styleable name="ArcProgress">
+    <declare-styleable name="ArcProgressBar">
         <attr name="borderWidth" format="dimension"></attr>
         <attr name="unprogresColor" format="color"></attr>
         <attr name="progressColor" format="color"></attr>

@@ -3,12 +3,9 @@ package com.pb.demo.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.os.Handler;
 import android.os.Message;
@@ -25,7 +22,7 @@ import java.lang.ref.WeakReference;
 /**
  * Created by zhangyy on 16/9/6.
  */
-public class ArcProgress extends ProgressBar {
+public class ArcProgressBar extends ProgressBar {
     private final int DEFAULT_LINEHEIGHT = dp2px(15);
     private final int DEFAULT_mRadius = dp2px(90);
     private final int DEFAULT_mUnProgressColor = 0xffeaeaea;  // 未使用进度条边框颜色
@@ -50,35 +47,35 @@ public class ArcProgress extends ProgressBar {
     protected ArcProgressHandler handler = new ArcProgressHandler(this);
     protected Thread thread = null;
 
-    public ArcProgress(Context context) {
+    public ArcProgressBar(Context context) {
         this(context, null);
     }
 
-    public ArcProgress(Context context, AttributeSet attrs) {
+    public ArcProgressBar(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ArcProgress(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ArcProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         final TypedArray attributes = getContext().obtainStyledAttributes(
-                attrs, R.styleable.ArcProgress);
+                attrs, R.styleable.ArcProgressBar);
         // 边框宽度
-        mBoardWidth = attributes.getDimensionPixelOffset(R.styleable.ArcProgress_borderWidth, DEFAULT_LINEHEIGHT);
+        mBoardWidth = attributes.getDimensionPixelOffset(R.styleable.ArcProgressBar_borderWidth, DEFAULT_LINEHEIGHT);
         // 未使用进度条边框颜色
-        mUnProgressColor = attributes.getColor(R.styleable.ArcProgress_unprogresColor, DEFAULT_mUnProgressColor);
+        mUnProgressColor = attributes.getColor(R.styleable.ArcProgressBar_unprogresColor, DEFAULT_mUnProgressColor);
         // 进度条边框颜色
-        mProgressColor = attributes.getColor(R.styleable.ArcProgress_progressColor, DEFAULT_mProgressColor);
+        mProgressColor = attributes.getColor(R.styleable.ArcProgressBar_progressColor, DEFAULT_mProgressColor);
         // 半径
-        mRadius = attributes.getDimensionPixelOffset(R.styleable.ArcProgress_radius, DEFAULT_mRadius);
+        mRadius = attributes.getDimensionPixelOffset(R.styleable.ArcProgressBar_radius, DEFAULT_mRadius);
         // 底部预留空缺弧度
-        mDegree = attributes.getInt(R.styleable.ArcProgress_degree, DEFAULT_OFFSETDEGREE);
+        mDegree = attributes.getInt(R.styleable.ArcProgressBar_degree, DEFAULT_OFFSETDEGREE);
         // 弧内部背景色
-        mBackgroundInside = attributes.getInt(R.styleable.ArcProgress_backgroundInside, mBackgroundInside);
+        mBackgroundInside = attributes.getInt(R.styleable.ArcProgressBar_backgroundInside, mBackgroundInside);
         // 弧内文字大小
-        mTextSizeInside = attributes.getInt(R.styleable.ArcProgress_TextSizeInside, DEFAULT_TEXT_SIZE_INSIDE);
+        mTextSizeInside = attributes.getInt(R.styleable.ArcProgressBar_TextSizeInside, DEFAULT_TEXT_SIZE_INSIDE);
         // 弧内文字颜色
-        mTextColorInside = attributes.getInt(R.styleable.ArcProgress_TextColorInside, DEFAULT_TEXT_COLOR_INSIDE);
-        boolean capRound = attributes.getBoolean(R.styleable.ArcProgress_arcCapRound, false);
+        mTextColorInside = attributes.getInt(R.styleable.ArcProgressBar_TextColorInside, DEFAULT_TEXT_COLOR_INSIDE);
+        boolean capRound = attributes.getBoolean(R.styleable.ArcProgressBar_arcCapRound, false);
 
         mArcPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         if (capRound)
@@ -210,16 +207,16 @@ public class ArcProgress extends ProgressBar {
     }
 
     protected class ArcProgressHandler extends Handler {
-        private final WeakReference<ArcProgress> arcProgress;
+        private final WeakReference<ArcProgressBar> arcProgress;
 
-        public ArcProgressHandler(ArcProgress arcProgress) {
-            this.arcProgress = new WeakReference<ArcProgress>(arcProgress);
+        public ArcProgressHandler(ArcProgressBar arcProgressBar) {
+            this.arcProgress = new WeakReference<ArcProgressBar>(arcProgressBar);
         }
 
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            ArcProgress aPb = arcProgress.get();
+            ArcProgressBar aPb = arcProgress.get();
             if (aPb != null) {
                 aPb.handleMessage(msg);
             }

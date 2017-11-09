@@ -1,26 +1,19 @@
 package com.pb.demo;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.pb.demo.widget.ArcProgress;
+import com.pb.demo.widget.ArcProgressBar;
 import com.pb.demo.widget.CircleProgressBar;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private CircleProgressBar mProgressBar;
     private CircleProgressBar mProgressBar2;
-    private ArcProgress mArcProgress;
+    private ArcProgressBar mArcProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +36,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mProgressBar2.setMax(100);
         mProgressBar2.setProgress(30, "兴趣值");
 
-        mArcProgress = (ArcProgress) findViewById(R.id.arcProgress);
-        mArcProgress.setOnClickListener(this);
+        mArcProgressBar = (ArcProgressBar) findViewById(R.id.arcProgress);
+        mArcProgressBar.setOnClickListener(this);
     }
 
 
@@ -52,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.arcProgress:
-                mArcProgress.setArcProgress(0, 80);
+                mArcProgressBar.setArcProgress(0, 80);
                 break;
         }
     }
